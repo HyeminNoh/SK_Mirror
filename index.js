@@ -24,12 +24,12 @@ app.get('/image', function(req, res){
     function(snapshot){
       
       console.log(snapshot.val());
-      res.send(snapshot.val());
+      res.json(snapshot.val());
       image.off("value");
     },
     function (errorObject) {
       console.log("The read failed: " + errorObject.code);
-      res.send("The read failed: " + errorObject.code);
+      res.json("The read failed: " + errorObject.code);
    });
 });
 
@@ -40,12 +40,12 @@ app.get('/baseimage', function(req, res){
     function(snapshot){
      
       console.log(snapshot.val());
-      res.send(snapshot.val());
+      res.json(snapshot.val());
       baseimage.off("value");
     },
     function (errorObject) {
       console.log("The read failed: " + errorObject.code);
-      res.send("The read failed: " + errorObject.code);
+      res.json("The read failed: " + errorObject.code);
    });
 });
 
@@ -55,12 +55,12 @@ app.get('/users', function(req, res){
   user.on("value",
     function(snapshot){
       console.log(snapshot.val());
-      res.send(snapshot.val());
+      res.json(snapshot.val());
       user.off("value");
     },
     function (errorObject) {
       console.log("The read failed: " + errorObject.code);
-      res.send("The read failed: " + errorObject.code);
+      res.json("The read failed: " + errorObject.code);
    });
 });
 
@@ -71,7 +71,7 @@ app.get('/imgurl', function(req, res){
   image.orderByChild('img_file').startAt('http').on("value", 
       function(snapshot) {
           console.log(snapshot.val());
-          res.send(snapshot.val());
+          res.json(snapshot.val());
 });
 });
 
