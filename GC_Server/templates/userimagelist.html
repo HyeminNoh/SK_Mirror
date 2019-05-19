@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Hair Styling Service - SK_MIRROR</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="page-top">
+  <!-- Header -->
+  <div class="container">
+      <br><br><br>
+      <div class="page-header" id="banner">
+          <div class="row">
+              <div class="col-lg-9 col-md-7 col-sm-6">
+                  <h2>{{ username }}님 갤러리</h2>
+                </div>
+                <div class="col-lg-3 text-right" style="margin-right:0%">
+                  <div class="row text-right">
+                  <form action="/imagelist" method="post" style="margin:20px">
+                    <input type="hidden" id="usernametxt" name ="usernametxt" value="{{ username }}"/>
+                    <input type="submit" class="btn btn-secondary btn-lg" name="defaultimagebtn" value="기본 이미지"/>    
+                  </form>
+                  <a href="http://127.0.0.1:8080/"><h1><i class="fa fa-home" aria-hidden="true"></i></h1></a>
+                </div>
+                </div>
+          </div>
+        </div>
+  </div>
+  <div class="container">
+      <div class="jumbotron">
+            <p class="lead">Select Image</p>
+            <form action="/imagematching" method="post" id="imageradio">
+              <div id="images" class="conainer text-center">  
+              </div>
+              <input type="hidden" name="selectImage" id="selectImage" value="hippypum"/>
+            </form>
+        </div>
+    </div>
+    <p id="usernametxt" hidden="true">{{ username }}</p>
+  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script rel="stylesheet" type="text/JavaScript" src="static/bootstrap/js/bootstrap.min.js"></script>
+  
+  <!-- Custom Script -->
+  <script src="/static/js/userimage.js"></script>
+</body>
+</html>

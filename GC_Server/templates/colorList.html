@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Hair Styling Service - SK_MIRROR</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="page-top">
+  <!-- Header -->
+  <div class="container">
+      <br><br><br>
+      <div class="page-header" id="banner">
+          <div class="row">
+              <div class="col-lg-9 col-md-7 col-sm-6">
+                  <h2>기본 컬러 갤러리</h2>
+                </div>
+                <div class="col-lg-3 text-right" style="margin-right:0%">
+                  <div class="row text-right">
+                  <form action="/usercolorlist" method="post" style="margin:20px">
+                    <input type="submit" class="btn btn-secondary btn-lg" name="usercolorbtn" value="사용자 컬러"/>    
+                  </form>
+                  <a href="http://127.0.0.1:8080/"><h1><i class="fa fa-home" aria-hidden="true"></i></h1></a>
+                </div>
+                </div>
+          </div>
+        </div>
+  </div>
+  <div class="container">
+      <div class="jumbotron">
+            <p class="lead">Select Color</p>
+            <form action="/colormatching" method="post" id="colorradio">
+              <div id="images" class="conainer text-center">
+                  <div class="col-lg-12">
+                  <div class="row">
+                    <img id="black" onclick="sendData('black')" src="static/images/colorchart/black.jpg" style="width:150px; height:100px; margin:10px;">
+                    <img id="gray" onclick="sendData('gray')" src="static/images/colorchart/gray.jpg" style="width:150px; height:100px; margin:10px;">
+                    <img id="darkbrown" onclick="sendData('darkbrown')" src="static/images/colorchart/darkbrown.jpg" style="width:150px; height:100px; margin:10px;">
+                    <img id="brown" onclick="sendData('brown')" src="static/images/colorchart/brown.jpg" style="width:150px; height:100px; margin:10px;">
+                    <img id="pink" onclick="sendData('pink')" src="static/images/colorchart/pink.jpg" style="width:150px; height:100px; margin:10px;">
+                    <img id="violet" onclick="sendData('violet')" src="static/images/colorchart/violet.jpg" style="width:150px; height:100px; margin:10px;">
+                  </div>
+                  <div class="row">
+                        <img id="babypink" onclick="sendData('babypink')" src="static/images/colorchart/babypink.jpg" style="width:150px; height:100px; margin:10px;">
+                        <img id="lavendar" onclick="sendData('lavendar')" src="static/images/colorchart/lavendar.jpg" style="width:150px; height:100px; margin:10px;">
+                        <img id="platinumaqua" onclick="sendData('platinumaqua')" src="static/images/colorchart/platinumaqua.jpg" style="width:150px; height:100px; margin:10px;">
+                        <img id="platinummatt" onclick="sendData('platinummatt')" src="static/images/colorchart/platinummatt.jpg" style="width:150px; height:100px; margin:10px;">
+                        <img id="mattkhaki" onclick="sendData('mattkhaki')" src="static/images/colorchart/mattkhaki.jpg" style="width:150px; height:100px; margin:10px;">
+                        <img id="olive" onclick="sendData('olive')" src="static/images/colorchart/olive.jpg" style="width:150px; height:100px; margin:10px;">
+                    </div>
+                    </div>   
+              </div>
+              <input type="hidden" name="selectColor" id="selectColor" value="black"/>
+            </form>
+        </div>
+    </div>
+
+  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script rel="stylesheet" type="text/JavaScript" src="static/bootstrap/js/bootstrap.min.js"></script>
+  
+  <!-- Custom Script -->
+  <script src="/static/js/colorlist.js"></script>
+</body>
+</html>

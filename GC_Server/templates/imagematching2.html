@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ImageMatching - SK_MIRROR</title>
+
+  <style>
+    #myVideo {
+        /*Mirror code starts*/
+        transform: rotateY(180deg);
+        -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+        -moz-transform:rotateY(180deg); /* Firefox */
+        /*Mirror code ends*/
+    }
+    .videodiv{
+        position: relative;
+    }
+    .overlay-desc{
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    </style>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body onload="load(), makeImageview()">
+  <div class="container">
+    <br><br>
+    <div class="page-header" id="banner">
+      <div class="col-lg-9 col-md-7 col-sm-6">
+        <h2>헤어 매칭</h2>
+      </div>
+    </div>
+  <div class="container">
+    <div class="row">
+        <div class="text-center col-md-6" id="videodiv">
+            <video width="100%" height="100%" autoplay="autoplay" id="myVideo"></video>
+            <div id="textdiv" class="overlay-desc">
+                <button class="btn" type="button" id="start_btn" style="font-size: 30px; color: black;" onclick="startCount()">정면을 봐주세요<br>촬영 시작 Touch!</button>
+            </div>
+        </div>
+      <div class="text-center col-md-6" style="margin-top:2%; margin-bottom: 2%">
+        <div class="text-center"><p style="font-size: 20px" id="hairname">{{ selectedname }}</p></div>
+        <div id="imagediv">
+          <img id="imgbox"/>
+          <!-- Trigger the modal with a button -->
+          <button id="seleccolor_btn" type="button" class="btn btn-primary btn-lg" style="width:350px; margin-top:5px;" data-toggle="modal" data-target="#myModal">Select Hair Color</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-11 text-right">
+        <a href="http://127.0.0.1:8080/imagelist"><h3><i class="fa fa-undo" aria-hidden="true"></i></h3></a>
+        </div>
+        <div class="col-md-1">
+            <a href="http://127.0.0.1:8080/"><h3><i class="fa fa-home" aria-hidden="true"></i></h3></a>
+          </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Select Hair Color</h4>
+          </div>
+          <div class="modal-body">
+              <div id="images" class="conainer text-center">
+                    <div class="row">
+                      <img id="black" onclick="saveColor('black')" src="static/images/colorchart/black.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="gray" onclick="saveColor('gray')" src="static/images/colorchart/gray.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="darkbrown" onclick="saveColor('darkbrown')" src="static/images/colorchart/darkbrown.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="brown" onclick="saveColor('brown')" src="static/images/colorchart/brown.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="pink" onclick="saveColor('pink')" src="static/images/colorchart/pink.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="violet" onclick="saveColor('violet')" src="static/images/colorchart/violet.jpg" style="width:150px; height:100px; margin:10px;">
+                    </div>
+                    <div class="row">
+                      <img id="babypink" onclick="saveColor('babypink')" src="static/images/colorchart/babypink.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="lavendar" onclick="saveColor('lavendar')" src="static/images/colorchart/lavendar.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="platinumaqua" onclick="saveColor('platinumaqua')" src="static/images/colorchart/platinumaqua.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="platinummatt" onclick="saveColor('platinummatt')" src="static/images/colorchart/platinummatt.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="mattkhaki" onclick="saveColor('mattkhaki')" src="static/images/colorchart/mattkhaki.jpg" style="width:150px; height:100px; margin:10px;">
+                      <img id="olive" onclick="saveColor('olive')" src="static/images/colorchart/olive.jpg" style="width:150px; height:100px; margin:10px;">
+                    </div>
+              </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetColor()">Color Reset</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <!-- Bootstrap core JavaScript loacal폴더안에 3.3.2version들었는데 4버전이 상위버전임 그래서 이페이지만 바꿔봄-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <!-- Custom Script -->
+  <script rel="stylesheet" src="/static/js/usingCam.js"></script>
+</body>
+</html>
