@@ -10,6 +10,7 @@ import logging
 import io
 from PIL import Image
 import rgbdata as rgb
+import ColorConverting as Colorcvt
 
 facedetector = cv2.CascadeClassifier('static\opencv\haarcascade\haarcascade_frontalface_default.xml')
 
@@ -41,11 +42,12 @@ def startMatching():
     parshair = np.asarray(bytearray(urlresp.read()), dtype="uint8")
     parshair = cv2.imdecode(parshair, cv2.IMREAD_UNCHANGED)
     #컬러선택됐으면 rgb데이터 로드
-    if colorname is not 'original':
+    if colorname != 'original':
         #rgb data tuple형태로 (0,0,0)
         rgbtuple = rgb.find(colorname)
-        #parshair 이미지 객체 변형 시키기
+        #parshair 이미지 객체 변형 시키기445
         #parshair = 변형함수(rgbtuple) <--이런식으루
+        parshair = Colorcvt.convertColor(parshair, rgbtuple)
 
     originface = startInit(originurl)
     #hair = cv2.imread('static\opencv\image\TestImage.png', -1)
@@ -62,8 +64,8 @@ def startMatching():
         hair_height, hair_width = overlayHair.shape[:2]
 
         x = int(x-(hair_width-w)/2)
-        y = int(y-3*(y/5))
-        #y = int(y-(hair_height-h)/4)
+        #y = int(y-3*(y/5))
+        y = int(y-(hair_height-h)/4)
         #y = int(y-2*y/5)
         w = hair_width
         h = hair_height

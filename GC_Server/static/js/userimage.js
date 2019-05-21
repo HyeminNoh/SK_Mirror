@@ -1,14 +1,18 @@
-var username = document.getElementById('usernametxt');
+var username = document.getElementById('usernamep');
+console.log(username.textContent);
+
 // get JSON with using pure javascript
 var request= new XMLHttpRequest();
 
-var url= "http://us-central1-backup-c8eab.cloudfunctions.net/app/images?username="+username;
-request.open("GET", url, params);
+var url= "http://us-central1-backup-c8eab.cloudfunctions.net/app/images?username="+username.textContent;
+console.log(url);
+request.open("GET", url);
 request.responseType='json';
 request.send();
 
 request.onload = function() {
     var images = request.response;
+    console.log(images);
     makeImageview(images);
 }
 

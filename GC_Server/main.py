@@ -30,9 +30,13 @@ selectedimage = {"origin":"", "parsimg":"", "userimg":"", "colorname":""}
 selectcolor = "original"
 app.secret_key = 'any random string'
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def mirrormain():
-    return render_template('index.html',username="")
+    username = request.args.get('username')
+    if username is not None:
+        return render_template('index.html', username=username)
+    else:
+        return render_template('index.html',username="")
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -59,7 +63,10 @@ def logout():
 
 @app.route('/imagelist', methods=['POST', 'GET'])
 def ImagelistView():
-    username = request.form['usernametxt']
+    if request.method == "POST":
+        username = request.form['usernametxt']
+    elif request.method == "GET":
+        username = request.args.get('username')
     if username is None:
         return render_template('imageList.html',username="")
     else:
@@ -70,9 +77,16 @@ def userImageView():
     username = request.form['usernametxt']
     return render_template('userimagelist.html',username=username)
 
-@app.route('/colorlist', methods=['POST'])
+@app.route('/colorlist', methods=['POST','GET'])
 def ColorlistView():
-    return render_template('colorList.html')
+    if request.method == "POST":
+        username = request.form['usernametocolor']
+    elif request.method == "GET":
+        username = request.args.get('username')
+    if username is None:
+        return render_template('colorList.html',username="")
+    else:
+        return render_template('colorList.html',username=username)
 
 @app.route('/usercolorlist', methods=['POST'])
 def userColorView():

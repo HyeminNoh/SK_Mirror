@@ -14,8 +14,10 @@ function logincheck(){
         logoutbtn.onclick = function(){location.href="http://127.0.0.1:8080/logout"};
         logindiv.appendChild(usertxt)
         logindiv.appendChild(logoutbtn)
-        var submitusername = document.getElementById('usernametxt');
-        submitusername.value=username
+        var usernametoimage = document.getElementById('usernametxt');
+        var usernametocolor = document.getElementById('usernametocolor');
+        usernametoimage.value=username;
+        usernametocolor.value=username;
     }
     if(!username){
         var loginbtn = document.createElement('button');
