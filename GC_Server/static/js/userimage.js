@@ -1,3 +1,5 @@
+//사용자이미지 리스트 뷰 db데이터 로드해서 반영
+
 var username = document.getElementById('usernamep');
 console.log(username.textContent);
 

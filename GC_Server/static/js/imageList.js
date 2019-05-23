@@ -1,3 +1,4 @@
+//기본제공 이미지 리스트 뷰 db로드 후 반영
 // get JSON with using pure javascript
 var request= new XMLHttpRequest();
 
