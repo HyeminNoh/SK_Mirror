@@ -1,3 +1,5 @@
+# png이미지의 색 변환 코드
+
 import cv2
 import numpy as np
 import os
