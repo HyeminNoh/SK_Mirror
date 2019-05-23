@@ -25,20 +25,20 @@
 
 프로젝트 구조 및 설명
 -------------
-1. GC_Server (Google Cloud Compute활용)
-    * 스마트 미러의 frontend 웹 구현
-    * Bootstrap 라이브러리 활용
-    * html, javascript 활용
-    * Flask 프렝임워크 활용
-    * 데이터 요청시 REST API (HTTP API 활용 요청)
-    * 헤어스타일링 기능을 위한 알고리즘 코드 파이썬으로 작성
-    * Opencv를 활용 영상처리
-    * Haarcascade알고리즘을 통한 안면인식 응용
-    
-2. FB_Server (Firebase활용)
-    * node.js framework활용
-    * RealtimeDatabse 활용
-    * HTTP API, json응답 작성
-
-3. MirrorApp
-    * Firebase RealtimeDatabse 활용
+> 1. GC_Server (Google Cloud Compute활용)
+>    * 스마트 미러의 frontend 웹 구현
+>    * Bootstrap 라이브러리 활용
+>    * html, javascript 활용
+>    * Flask 프렝임워크 활용
+>    * 데이터 요청시 REST API (HTTP API 활용 요청)
+>    * 헤어스타일링 기능을 위한 알고리즘 코드 파이썬으로 작성
+>    * Opencv를 활용 영상처리
+>    * Haarcascade알고리즘을 통한 안면인식 응용
+>    
+> 2. FB_Server (Firebase활용)
+>    * node.js framework활용
+>    * RealtimeDatabse 활용
+>    * HTTP API, json응답 작성
+>
+> 3. MirrorApp
+>    * Firebase RealtimeDatabse 활용
