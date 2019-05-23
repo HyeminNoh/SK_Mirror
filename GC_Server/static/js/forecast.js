@@ -1,3 +1,5 @@
+//날씨 정보 동적으로 뷰에 로드
+
 window.onload(makeForecast());
 
 function makeForecast(){
