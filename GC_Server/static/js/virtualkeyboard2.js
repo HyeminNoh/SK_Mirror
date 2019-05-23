@@ -1,3 +1,5 @@
+//화상키보드 패스워드 input 부분 객체
+
 $('#pwd_input')
 	.keyboard({
 		layout: 'international',

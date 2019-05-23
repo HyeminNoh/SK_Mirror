@@ -1,3 +1,4 @@
+// 화상키보드 id input부분 객체
 $('#name_input')
 	.keyboard({
 		layout: 'international',
