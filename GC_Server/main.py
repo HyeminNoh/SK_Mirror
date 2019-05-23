@@ -26,10 +26,12 @@ import rgbdata as rgb
 import gcpCloudStorage as gcpCS
 
 app = Flask(__name__)
+#선택 이미지 정보 저장 전역변수
 selectedimage = {"origin":"", "parsimg":"", "userimg":"", "colorname":""}
 selectcolor = "original"
 app.secret_key = 'any random string'
 
+#메인
 @app.route('/', methods=["GET"])
 def mirrormain():
     username = request.args.get('username')
@@ -38,6 +40,7 @@ def mirrormain():
     else:
         return render_template('index.html',username="")
 
+#로그인 요청
 @app.route('/login', methods=['POST'])
 def login():
     #form에서 이메일과 비밀번호 얻기
@@ -55,12 +58,14 @@ def login():
             return redirect(url_for('mirrormain',username=session['username']))
     return redirect(url_for('mirrormain',username=""))
 
+#로그아웃 요청
 @app.route('/logout', methods=['POST','GET'])
 def logout():
    # remove the username from the session if it is there
    session.pop('username', None)
    return redirect(url_for('mirrormain', username=""))
 
+#이미지리스트 뷰, 로그인 유무 확인
 @app.route('/imagelist', methods=['POST', 'GET'])
 def ImagelistView():
     if request.method == "POST":
@@ -72,11 +77,13 @@ def ImagelistView():
     else:
         return render_template('imageList.html',username=username)
 
+#사용자이미지 리스트 뷰
 @app.route('/userimagelist', methods=['POST'])
 def userImageView():
     username = request.form['usernametxt']
     return render_template('userimagelist.html',username=username)
 
+#기본 컬러 리스트 뷰, 로그인 유무 확인
 @app.route('/colorlist', methods=['POST','GET'])
 def ColorlistView():
     if request.method == "POST":
@@ -88,16 +95,19 @@ def ColorlistView():
     else:
         return render_template('colorList.html',username=username)
 
+#사용자 컬러 리스트 뷰
 @app.route('/usercolorlist', methods=['POST'])
 def userColorView():
     return '준비중'
 
+#이미지 매칭 기능 기본 뷰
 @app.route('/imagematching', methods=['POST'])
 def imagematching():
     selected = request.form['selectImage']
     selectedname = str(selected)
     return render_template('imagematching2.html', selectedname=selectedname)
 
+#컬러매칭 기능 기본 뷰
 @app.route('/colormatching', methods=['POST'])
 def colormatching():
     selected = request.form['selectColor']
@@ -105,14 +115,14 @@ def colormatching():
     rgbtuple = rgb.find(selectedcolor)
     return str(rgbtuple)
 
+#선택된 이미지 정보 요청
 @app.route('/selectedimage', methods=['GET'])
 def findselected():
     #딕셔너리 -> json으로 변환 후 선택된 이미지에 대한 json데이터 반환
     selectedreturn = json.dumps(selectedimage)
     return selectedreturn
 
-#이미지 매칭 실행 시키고 결과 url을 반환해줄 함수 부분
-#현재는 성공, 실패 여부를 text형태로 반환하게 되어있음!
+#이미지 매칭 실행 후 결과 이미지 url을 반환
 @app.route('/imageresult', methods=['POST'])
 def imageresult():
     origin = request.json['origin']
@@ -142,6 +152,7 @@ def imageresult():
         print('#################', url)
     return url
 
+#기상청 API 활용 날씨 정보
 @app.route('/forecast', methods=['GET'])
 def forecast():
     #로그인상태일때 주소지
