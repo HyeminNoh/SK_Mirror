@@ -1,3 +1,4 @@
+// db 메모 데이터 로드 후 view 반영
 window.onload(makeMemobox());
 
 function makeMemobox(){
