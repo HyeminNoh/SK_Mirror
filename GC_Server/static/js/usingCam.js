@@ -1,3 +1,6 @@
+//html5 video flash 활용, 이미지 캡쳐 후 flask앱으로 전송
+//이미지 매칭기능 요청 후 완료결과물 출력
+
 var videoTracks;
 var selectedimg;
 var snapURI;
