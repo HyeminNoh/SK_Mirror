@@ -1,3 +1,5 @@
+# 구글 클라우드 버켓에 결과 이미지 저장
+# 저장된 이미지의 이미지 url 반환
 from datetime import datetime
 from google.cloud import storage
 import random
