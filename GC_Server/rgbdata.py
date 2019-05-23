@@ -1,3 +1,6 @@
+# 기본제공 컬러 데이터의 rgb데이터 모음
+# 이미지 이름 기반으로 선택된 이미지의 rgb 튜플값을 반환
+
 import json
 
 default_color={
