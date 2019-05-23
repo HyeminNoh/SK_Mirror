@@ -1,3 +1,5 @@
+// 시간출력 함수
+
 function printClock() {
     
     var clock = document.getElementById("clock");            // 출력할 장소 선택
