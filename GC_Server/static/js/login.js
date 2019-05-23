@@ -1,3 +1,5 @@
+// 로그인 상태 확인
+// 미로그인 상태시 db 사용자 데이터 활용 input값과의 비교를 통해 로그인 진행
 window.onload(logincheck());
 function logincheck(){
     const urlParams = new URLSearchParams(window.location.search);
