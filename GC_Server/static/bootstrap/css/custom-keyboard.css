@@ -1,0 +1,16 @@
+/* override bootstrap active state */
+button.btn-default:active {
+	background-color: #FFF;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+button.btn-default:active:hover {
+	background-color: #3276B1;
+}
+/* override Bootstrap excessive button padding */
+button.ui-keyboard-button.btn {
+	padding: 1px 6px;
+}
+/* Bootswatch Darkly input is too bright */
+.ui-keyboard-input.light, .ui-keyboard-preview.light { color: #222; background: #ddd; }
+.ui-keyboard-input.dark, .ui-keyboard-preview.dark { color: #ddd; background: #222; }
