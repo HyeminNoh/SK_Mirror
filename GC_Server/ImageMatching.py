@@ -1,4 +1,6 @@
-# facerecognition.py
+# OpenCV를 활용한 헤어스타일링 기능 코드
+# 사용자 선택 png이미지를 합성하는 기능 수행
+
 import numpy as np
 import cv2
 import sys
