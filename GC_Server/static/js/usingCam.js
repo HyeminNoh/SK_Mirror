@@ -7,7 +7,7 @@ var snapURI;
 var video = document.getElementById('myVideo');
 function load() {
     if (navigator.webkitGetUserMedia) {
-        navigator.webkitGetUserMedia({audio:true, video:true},
+        navigator.webkitGetUserMedia({audio:false, video:true},
             function(stream) {
                 video.srcObject=stream;
                 videoTracks = stream.getVideoTracks();
