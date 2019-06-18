@@ -137,6 +137,9 @@ def imageresult():
         )
 
         print('#################', url)
+    data = {'result': url}
+    response = requests.post('http://us-central1-backup-c8eab.cloudfunctions.net/app/uploadresult', data=data)
+
     return url
 
 #기상청 API 활용 날씨 정보
