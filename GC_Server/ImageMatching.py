@@ -23,7 +23,7 @@ def startInit(originurl):
     original = cv2.imdecode(original, cv2.IMREAD_COLOR)
     gray = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
     originface = facedetector.detectMultiScale(gray, 1.3, 5)
-    print("원본안면인식크기 width:"+str(originface[0][2])+" height:"+str(originface[0][3]))
+    print("인식y좌표:"+str(originface[0][1])+"원본안면인식크기 width:"+str(originface[0][2])+" height:"+str(originface[0][3]))
 
     return originface
 
@@ -38,13 +38,13 @@ def startMatching():
     userurl = dictdata['userimg']
     #colorname 변수 추가됨
     colorname = dictdata['colorname']
-    
+    print(colorname)
     #파싱이미지 png로드
     urlresp = urllib.request.urlopen(parsurl)
     parshair = np.asarray(bytearray(urlresp.read()), dtype="uint8")
     parshair = cv2.imdecode(parshair, cv2.IMREAD_UNCHANGED)
     #컬러선택됐으면 rgb데이터 로드
-    if colorname != 'original':
+    if colorname != 'original' :
         #rgb data tuple형태로 (0,0,0)
         rgbtuple = rgb.find(colorname)
         #parshair 이미지 객체 변형 시키기445
@@ -64,11 +64,12 @@ def startMatching():
         overlayHair = changeSize(parshair, (w, h), (originface[0][2], originface[0][3]))
 
         hair_height, hair_width = overlayHair.shape[:2]
-
+        y_position = originface[0][1]*(h/originface[0][3])
+        print(str(y)+":사용자얼굴인식y좌표->"+str(y_position))
         x = int(x-(hair_width-w)/2)
+        y = int(y-y_position)
         #y = int(y-3*(y/5))
-        y = int(y-(hair_height-h)/4)
-        #y = int(y-2*y/5)
+        #y = int(y-(hair_height-h)/4)
         w = hair_width
         h = hair_height
 
