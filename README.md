@@ -39,6 +39,7 @@
 >    * node.js framework활용
 >    * RealtimeDatabse 활용
 >    * HTTP API, json응답 작성
+>    ---> 2019.06.21 GC_Server로 DB 관리 기능 
 >
 > 3. MirrorApp
 >    * Firebase RealtimeDatabse 활용
