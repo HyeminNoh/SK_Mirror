@@ -6,7 +6,7 @@ var selectedimg;
 var snapURI;
 var video = document.getElementById('myVideo');
 function load() {
-    //resetColor()
+    resetColor()
     if (navigator.webkitGetUserMedia) {
         navigator.webkitGetUserMedia({audio:false, video:true},
             function(stream) {
