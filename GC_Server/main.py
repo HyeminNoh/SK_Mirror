@@ -1,5 +1,4 @@
 #헤어스타일링 지원 스마트미러 flask app
-
 import logging
 import requests
 import ImageMatching as ImageMatching
@@ -9,8 +8,11 @@ from flask import Flask, render_template, request, jsonify, g, session, redirect
 from werkzeug.utils import secure_filename
 import time
 import maptogrid
+import SegmentationHair as seg_hair
 import rgbdata as rgb
 import gcpCloudStorage as gcpCS
+import FirebaseDatabase as FDB
+
 
 app = Flask(__name__)
 #선택 이미지 정보 저장 전역변수
@@ -34,8 +36,7 @@ def login():
     checkname = request.form['uname1']
     checkpwd = request.form['pwd1']
     #파이어베이스 db 사용자 정보들과 비교
-    response = requests.get('http://us-central1-backup-c8eab.cloudfunctions.net/app/users')
-    userdata = response.json()
+    userdata = FDB.readUser()
     if checkname in userdata.keys():
         loginuser_data = userdata[checkname]
         #print(loginuser_data)
@@ -51,6 +52,36 @@ def logout():
    # remove the username from the session if it is there
    session.pop('username', None)
    return redirect(url_for('mirrormain', username=""))
+
+#메모 로드 테스트
+@app.route('/memotest', methods=['GET'])
+def memotest():
+    memodata = FDB.loadmemo("testuser")
+    return memodata
+
+#메모 데이터
+@app.route('/memodata', methods=['GET'])
+def memodata():
+    if "username" in session:
+        memodata = FDB.loadmemo(session['username'])
+    elif "username" not in session:
+        memodata = FDB.loadmemo("testuser")
+    return memodata
+
+#베이스 이미지 리스트 json
+@app.route('/baseimagelist', methods=['GET'])
+def baseimagelist():
+    imagelist = FDB.baseimage()
+    return imagelist
+
+#사용자 이미지 리스트 json
+@app.route('/userimagelist', methods=['GET'])
+def userimagelist():
+    if "username" in session:
+        imagelist = FDB.userimage(session["username"])
+    elif "username" not in session:
+        imagelist = FDB.baseimage()
+    return imagelist
 
 #이미지리스트 뷰, 로그인 유무 확인
 @app.route('/imagelist', methods=['POST', 'GET'])
@@ -103,11 +134,41 @@ def colormatching():
     return str(rgbtuple)
 
 #선택된 이미지 정보 요청
-@app.route('/selectedimage', methods=['GET'])
+@app.route('/selectedimage', methods=['POST','GET'])
 def findselected():
-    #딕셔너리 -> json으로 변환 후 선택된 이미지에 대한 json데이터 반환
-    selectedreturn = json.dumps(selectedimage)
-    return selectedreturn
+    if request.method == "POST":
+        img_name = request.json['img_name']
+        if 'username' in session:
+            selectedreturn = FDB.selectedimage(session['username'], img_name)
+        elif 'username' not in session:
+            selectedreturn = FDB.selectedimage("testuser", img_name)
+        return selectedreturn
+    elif request.method =="GET":
+        selectedreturn = json.dumps(selectedimage)
+        return selectedreturn
+        
+#헤어 이미지 추출 실행
+@app.route('/segmentation', methods=['POST'])
+def segmentation():
+    originurl = request.json['img_url']
+    img_name = request.json['img_name']
+    base64_result = seg_hair.makeresult(originurl)
+    url = ''
+    with open("segmentation_result.png", "rb") as fh:
+        url = gcpCS.upload(
+            file=fh,
+            bucket_name='skmirror',
+            filepath='/imgMatch'
+        )
+
+        print('#################', url)
+    data = {'result': url, 'img_name': img_name, 'username': session['username']}
+    print(data)
+    #response = requests.post('http://us-central1-backup-c8eab.cloudfunctions.net/app/segmentation_result', data=data)
+    if 'username' in session:
+        FDB.saveSegmentResult(session['username'], url, img_name)
+
+    return url
 
 #이미지 매칭 실행 후 결과 이미지 url을 반환
 @app.route('/imageresult', methods=['POST'])
@@ -137,9 +198,12 @@ def imageresult():
         )
 
         print('#################', url)
-    data = {'result': url}
-    response = requests.post('http://us-central1-backup-c8eab.cloudfunctions.net/app/uploadresult', data=data)
-
+    #data = {'result': url}
+    #response = requests.post('http://us-central1-backup-c8eab.cloudfunctions.net/app/uploadresult', data=data)
+    if 'username' in session:
+        FDB.saveMatchingResult(session['username'], url)
+    elif 'username' not in session:
+        FDB.saveMatchingResult("testuser", url)
     return url
 
 #기상청 API 활용 날씨 정보
@@ -149,8 +213,7 @@ def forecast():
     if 'username' in session:
         #파이어베이스 db 사용자 정보로드
         username = session['username']
-        response = requests.get('http://us-central1-backup-c8eab.cloudfunctions.net/app/users')
-        userdata = response.json()
+        userdata = FDB.readUser()
         address = userdata[username].get('address')
     #로그아웃상태일때 기본 주소지
     elif 'username' not in session:
