@@ -31,14 +31,17 @@
 >    * html, javascript 활용
 >    * Flask 프레임워크 활용
 >    * 데이터 요청시 REST API (HTTP API 활용 요청)
+>    * Firebase RealtimeDatabase 관리 (데이터 탐색, 추가, 수정)
 >    * 헤어스타일링 기능을 위한 알고리즘 코드 파이썬으로 작성
->    * Opencv를 활용 영상처리
+>      (헤어이미지 합성, 헤어 이미지 색 변환, 헤어 이미지 추출)
+>    * Opencv를 활용한 영상처리
 >    * Haarcascade 알고리즘을 통한 안면인식 응용
 >    
 > 2. FB_Server (Firebase활용)
 >    * node.js framework활용
 >    * RealtimeDatabse 활용
->    * HTTP API, json응답 작성
+>    * HTTP API, json응답 작성    
+>    ---> 2019.06.21 GC_Server로 DB 관리 기능 통합
 >
 > 3. MirrorApp
 >    * Firebase RealtimeDatabse 활용
