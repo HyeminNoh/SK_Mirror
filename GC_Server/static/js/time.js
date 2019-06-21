@@ -1,4 +1,5 @@
 // 시간출력 함수
+window.onload(printClock());
 
 function printClock() {
     
