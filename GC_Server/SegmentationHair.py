@@ -1,5 +1,13 @@
 import numpy as np
 import cv2
+import sys
+import urllib
+import json
+import base64
+import requests
+import logging
+import io
+from PIL import Image
 
 hsv = 0
 lower_blue1 = 0
@@ -12,7 +20,7 @@ pointx = 0
 
 def makeresult(originurl):
     #haarcasecade호출
-    faceCascade = cv2.CascadeClassifier('static\opencv\haarcascade\haarcascade_frontface.xml')
+    faceCascade = cv2.CascadeClassifier('static\opencv\haarcascade\haarcascade_frontalface_default.xml')
     eye_cascade = cv2.CascadeClassifier("static\opencv\haarcascade\haarcascade_eye.xml")
 
     # 이미지읽기 image는 추출할 이미지
@@ -20,13 +28,13 @@ def makeresult(originurl):
     resp = urllib.request.urlopen(originurl)
     image = np.asarray(bytearray(resp.read()), dtype="uint8")
     image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-    bgimage = cv2.imread("GC_Server\static\images\\bg.png", -1)
+    bgimage = cv2.imread("static/images/bg.png", -1)
     # 원본이미지 폭, 너비 구하기
-    img_height = image.shape[0]
-    img_width = image.shape[1]
+    height, width, channels = image.shape
     #이미지크기변경
-    # image = cv2.resize(image, dsize=(500, 500), interpolation=cv2.INTER_AREA)
-    bgimage = cv2.resize(bgimage, dsize=(img_width, img_height), interpolation=cv2.INTER_AREA)
+    # image = cv2.resize(image, dsize=(width, height), interpolation=cv2.INTER_AREA)
+    #투명한배경이미지를 원본이미지 크기로 변경
+    bgimage = cv2.resize(bgimage, dsize=(width, height), interpolation=cv2.INTER_AREA)
 
     #Garyscale로 변환
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -34,7 +42,7 @@ def makeresult(originurl):
     #msk = cv2.threshold(gray, 10, 255, cv2.THRESH_BINARY)
     #inv = cv2.bitwise_not(msk)
     #얼굴인식
-    faces = faceCascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30))
+    faces = faceCascade.detectMultiScale(gray, 1.3, 5)
 
     print
     "Face Count : {0}".format(len(faces))
