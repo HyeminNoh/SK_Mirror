@@ -23,11 +23,10 @@ app.secret_key = 'any random string'
 #메인
 @app.route('/', methods=["GET"])
 def mirrormain():
-    username = request.args.get('username')
-    if username is not None:
-        return render_template('index.html', username=username)
-    else:
-        return render_template('index.html',username="")
+    if "username" in session:
+        return render_template('index.html', username=session["username"])    
+    elif "username" not in session:
+        return render_template('index.html', username="")
 
 #로그인 요청
 @app.route('/login', methods=['POST'])
@@ -86,20 +85,16 @@ def userimagelist():
 #이미지리스트 뷰, 로그인 유무 확인
 @app.route('/imagelist', methods=['POST', 'GET'])
 def ImagelistView():
-    if request.method == "POST":
-        username = request.form['usernametxt']
-    elif request.method == "GET":
-        username = request.args.get('username')
-    if username is None:
+    if "username" not in session:
         return render_template('imageList.html',username="")
-    else:
-        return render_template('imageList.html',username=username)
+    elif "username" in session:
+        return render_template('imageList.html',username=session["username"])
 
 #사용자이미지 리스트 뷰
 @app.route('/userimagelist', methods=['POST'])
 def userImageView():
-    username = request.form['usernametxt']
-    return render_template('userimagelist.html',username=username)
+    #username = request.form['usernametxt']
+    return render_template('userimagelist.html',username=session["username"])
 
 #기본 컬러 리스트 뷰, 로그인 유무 확인
 @app.route('/colorlist', methods=['POST','GET'])
