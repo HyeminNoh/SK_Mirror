@@ -1,12 +1,10 @@
 // 로그인 상태 확인
 // 미로그인 상태시 db 사용자 데이터 활용 input값과의 비교를 통해 로그인 진행
-window.onload(logincheck());
-function logincheck(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
+function logincheck(username){
     var logindiv = document.getElementById('logindiv');
     console.log("세션값확인 사용자이름:"+username);
-    if(username){
+    
+    if(username!=""){
         //로그인 되어있는 상태인 것.
         var usertxt = document.createElement('div');
         usertxt.innerHTML="<p style='font-size:25px'>"+username+"님의 스마트미러</p>"
@@ -21,7 +19,7 @@ function logincheck(){
         usernametoimage.value=username;
         usernametocolor.value=username;
     }
-    if(!username){
+    if(username==""){
         var loginbtn = document.createElement('button');
         var coment = document.createElement('p');
         coment.textContent="로그인하시면 사용자 업로드 이미지와 컬러도 사용 가능합니다."
