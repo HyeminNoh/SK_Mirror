@@ -66,8 +66,8 @@ function startparsing (img_name, img_url){
         "img_url": img_url,
     };
     var url= "http://127.0.0.1:8080/segmentation";
-    console.log(url)
-    pars_request.open("POST", url, true);
+    console.log(data)
+    pars_request.open("POST", url, false);
     pars_request.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
     pars_request.send(JSON.stringify(data)); // 데이터를 stringify해서 보냄
 
