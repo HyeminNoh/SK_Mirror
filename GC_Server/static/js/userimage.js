@@ -6,7 +6,8 @@ console.log(username.textContent);
 // get JSON with using pure javascript
 var request= new XMLHttpRequest();
 
-var url= "http://us-central1-backup-c8eab.cloudfunctions.net/app/images?username="+username.textContent;
+//var url= "http://us-central1-backup-c8eab.cloudfunctions.net/app/images?username="+username.textContent;
+var url = "http://127.0.0.1:8080/userimagelist"
 console.log(url);
 request.open("GET", url);
 request.responseType='json';
@@ -15,6 +16,7 @@ request.send();
 request.onload = function() {
     var images = request.response;
     console.log(images);
+    checkimage(images);
     makeImageview(images);
 }
 
@@ -32,15 +34,45 @@ function makeImageview(jsonObj) {
         imgbox.style.width = '200px';
         imgbox.style.display = 'inline-block';
         imgbox.name=keys[i];
-        //imgbox.onclick=function() {sendData(this.name)};
-        imgbox.onclick=function() {alert('준비중입니다.')};
+        imgbox.onclick=function() {sendData(this.name)};
+        //imgbox.onclick=function() {alert('준비중입니다.')};
         container.appendChild(imgbox);
     }
 }
+
 function sendData(imgName){
     var select = document.getElementById('selectImage');
     select.value=imgName;
     console.log(imgName);
     var form = document.getElementById('imageradio');
     form.submit();
+}
+function checkimage(jsonObj){
+    var loadimages = jsonObj;
+    for (var i = 0; i < Object.keys(loadimages).length; i++) {
+        var keys = Object.keys(loadimages);
+        var img_url = loadimages[keys[i]].img_file;
+        var pars_url = loadimages[keys[i]].pars_img;
+        if(pars_url=="" || pars_url==null){
+            startparsing(keys[i],img_url)
+        }
+    }
+}
+function startparsing (img_name, img_url){
+    // get JSON with using pure javascript
+    var pars_request= new XMLHttpRequest();
+    var data = {
+        "img_name": img_name,
+        "img_url": img_url,
+    };
+    var url= "http://127.0.0.1:8080/segmentation";
+    console.log(url)
+    pars_request.open("POST", url, true);
+    pars_request.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
+    pars_request.send(JSON.stringify(data)); // 데이터를 stringify해서 보냄
+
+    pars_request.onload = function() {
+        var result_url = pars_request.response;
+        console.log(result_url);
+    }
 }

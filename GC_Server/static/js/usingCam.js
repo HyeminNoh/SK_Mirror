@@ -6,6 +6,7 @@ var selectedimg;
 var snapURI;
 var video = document.getElementById('myVideo');
 function load() {
+    //resetColor()
     if (navigator.webkitGetUserMedia) {
         navigator.webkitGetUserMedia({audio:false, video:true},
             function(stream) {
@@ -18,6 +19,7 @@ function load() {
         alert('webkitGetUserMedia not supported');
     }
 }
+
 function startCount(){
     var btn=document.getElementById("start_btn");
     var seconds=3;
@@ -54,17 +56,22 @@ function makeImageview() {
     console.log(hairname.textContent);
     var name = hairname.textContent;
     var request= new XMLHttpRequest();
-    var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/seletedimage?name="+name;
-    request.open("GET", url);
-    request.responseType='json';
-    request.send();
+    var data = {
+        "img_name": name
+    };
+    //var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/seletedimage?name="+name;
+    var url = "http://127.0.0.1:8080/selectedimage";
+    request.open("POST", url);
+    request.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
+    request.send(JSON.stringify(data)); // 데이터를 stringify해서 보냄
 
     request.onload = function() {
         var image = request.response;
-        selectedimg=image;
-        //console.log(image);
-        var keys = Object.keys(image);
-        var loadimages = image[keys[0]].img_file;
+        selectedimg=JSON.parse(image);
+        var keys = Object.keys(selectedimg);
+        //console.log(keys[0])
+        var loadimages = selectedimg[keys[0]].img_file;
+        //console.log(loadimages)
         var imgbox = document.getElementById('imgbox');
         imgbox.src=loadimages;
         imgbox.style.height = '350';
@@ -107,11 +114,11 @@ function startmatching(){
             var imgbox = document.getElementById('imgbox');
             var button = document.getElementById('seleccolor_btn');
             var textdiv = document.getElementById("textdiv");
+            button.style.visibility = 'hidden';
+            textdiv.textContent="success";
             imgbox.src=resulttxt;
             imgbox.style.height = '100%';
             imgbox.style.width = '100%';
-            button.hidden('true');
-            textdiv.textContent="success";
         }
     }
 }

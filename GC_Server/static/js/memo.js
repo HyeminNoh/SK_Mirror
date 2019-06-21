@@ -5,7 +5,8 @@ function makeMemobox(){
     // get JSON with using pure javascript
     var request= new XMLHttpRequest();
 
-    var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/memodata";
+    //var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/memodata";
+    var url= "http://127.0.0.1:8080/memodata";
     request.open("GET", url);
     request.responseType='json';
     request.send();

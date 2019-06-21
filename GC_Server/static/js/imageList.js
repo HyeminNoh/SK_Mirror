@@ -2,7 +2,8 @@
 // get JSON with using pure javascript
 var request= new XMLHttpRequest();
 
-var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/baseimagelist";
+//var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/baseimagelist";
+var url = "http://127.0.0.1:8080/baseimagelist"
 request.open("GET", url);
 request.responseType='json';
 request.send();
@@ -13,7 +14,8 @@ request.onload = function() {
 }
 
 function makeImageview(jsonObj) {
-    var loadimages = jsonObj.test;
+    //var loadimages = jsonObj.test;
+    var loadimages = jsonObj;
     var container = document.getElementById('images');
     for (var i = 0; i < Object.keys(loadimages).length; i++) {
         var imgbox = document.createElement('img');
