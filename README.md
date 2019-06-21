@@ -38,7 +38,7 @@
 > 2. FB_Server (Firebase활용)
 >    * node.js framework활용
 >    * RealtimeDatabse 활용
->    * HTTP API, json응답 작성
+>    * HTTP API, json응답 작성    
 >    ---> 2019.06.21 GC_Server로 DB 관리 기능 
 >
 > 3. MirrorApp
