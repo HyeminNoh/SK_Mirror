@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainView"
+    android:background="@color/bootstrap_gray_dark"
+    android:orientation="vertical"
+    >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bootstrap_gray_dark"
+        android:layout_centerInParent="true"
+
+        >
+
+        <TableRow>
+
+            <Button
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제공컬러"
+                android:background="@color/bootstrap_gray"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                android:layout_marginTop="10dp"
+                android:drawableTop="@drawable/chlorine"
+                android:layout_weight="0.5"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:onClick="colormatch"
+
+                />
+
+            <Button
+                android:id="@+id/hairmatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제공헤어"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+
+                android:onClick="hairmatch"
+                android:background="@color/bootstrap_gray"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                android:drawableTop="@drawable/hair"
+                android:layout_weight="0.5"
+
+                />
+        </TableRow>
+
+
+        <TableRow>
+
+    <Button
+                android:id="@+id/memo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="메모"
+                android:onClick="Memo"
+                android:background="@color/bootstrap_gray"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                android:layout_weight="0.5"
+                 android:layout_marginBottom="10dp"
+                 android:layout_marginRight="5dp"
+        android:drawableTop="@drawable/notebook"
+                />
+
+        <Button
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이미지관리"
+            android:onClick="imagemanage"
+            android:background="@color/bootstrap_gray"
+            android:textColor="@color/bootstrap_brand_secondary_fill"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:drawableTop="@drawable/picture"
+
+            />
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="마이페이지"
+                android:onClick="mypage"
+                android:background="@color/bootstrap_gray"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                android:layout_marginBottom="10dp"
+                android:drawableTop="@drawable/mypage"
+                android:layout_weight="0.5"
+                android:layout_marginRight="5dp"
+
+                />
+
+            <Button
+                android:id="@+id/designer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="매칭갤러리"
+                android:background="@color/bootstrap_gray"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="5dp"
+                android:onClick="imggallery"
+
+                android:drawableTop="@drawable/designer"
+                />
+
+        </TableRow>
+
+
+
+
+
+
+
+
+    </TableLayout>
+
+</RelativeLayout>

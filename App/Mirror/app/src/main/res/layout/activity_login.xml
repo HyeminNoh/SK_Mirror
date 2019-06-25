@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@color/bootstrap_gray_dark"
+    >
+
+
+    <ImageView
+        android:id="@+id/main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login_button"
+
+        />
+
+   <!-- <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:id="@+id/button_naverlogin"
+        android:layout_above="@+id/login_button"
+        android:layout_centerInParent="true"
+
+        />-->
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/custom"
+        android:layout_centerInParent="true"
+        android:id="@+id/login_button"
+
+        />
+
+
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:id="@+id/custom"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/Join"
+        android:onClick="custom"
+        android:drawableLeft="@drawable/fui_ic_mail_white_24dp"
+        android:text="E-Mail 로그인"
+        app:bootstrapBrand="danger"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        app:showOutline="false"
+        app:roundedCorners="false"
+
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/Join"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:text="회원가입"
+        app:bootstrapBrand="primary"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        app:showOutline="false"
+        app:roundedCorners="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:onClick="join"
+
+        />
+
+
+
+
+</RelativeLayout>

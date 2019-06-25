@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".hairtypereplace"
+    android:background="@color/bootstrap_gray_dark"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="성별 : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/genderrg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/boy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="남"
+                        />
+                    <RadioButton
+                        android:id="@+id/gilr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="여"
+                        android:checked="true"
+                        />
+
+
+                </RadioGroup>
+
+
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연령 : "
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지역 : "
+                    />
+
+            </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원활한 시술을 위해 사용되는 정보입니다."
+                />
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="머리길이 : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/length"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/shorthair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="단발"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/longhair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="장발"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/non1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모름"
+                        android:checked="true"
+
+                        />
+
+                </RadioGroup>
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모발타입 : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/hairtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/Intelligence"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="지성"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/inattention"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="건성"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/neutrality"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중성    "
+                        />
+
+                    <RadioButton
+                        android:id="@+id/Sensitivity"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="민감성"
+                        />
+                    <RadioButton
+                        android:id="@+id/non2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모름"
+                        android:checked="true"
+
+                        />
+
+                </RadioGroup>
+
+            </TableRow>
+
+            <TableRow>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모발굵기 : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/thickness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/tenuity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="얇음"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/nomal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="보통"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/Thick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="두꺼움"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/non3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모름"
+                        android:checked="true"
+
+                        />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모    량    : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/low"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="적음"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/nomal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="보통"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/plenty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="많음"
+                        />
+                    <RadioButton
+                        android:id="@+id/non4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모름"
+                        android:checked="true"
+
+                        />
+
+                </RadioGroup>
+
+
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모발상태 : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/damaged"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="손상"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/nomal3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="보통"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/health"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="건강"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/non5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모름"
+                        android:checked="true"
+
+                        />
+
+                </RadioGroup>
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="두피타입 : "
+                    />
+
+                <RadioGroup
+                    android:id="@+id/scalptype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/Intelligence2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="지성"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/inattention2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="건성"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/Sensitivity2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="민감성"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/non6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모름"
+                        android:checked="true"
+
+                        />
+                </RadioGroup>
+
+
+            </TableRow>
+
+
+
+
+            <Button
+                android:id="@+id/replace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="변경"
+                android:onClick="replacehairdata"
+                />
+
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="취소"
+                    android:onClick="canceldata"
+                    />
+
+
+
+
+        </TableLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

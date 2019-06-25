@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Show_image"
+    android:orientation="vertical"
+    android:background="@color/bootstrap_gray_dark"
+
+    >
+
+    <!--<<LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Stop Mirror"
+              android:layout_weight="1"
+              android:onClick="stopmirror"
+              android:id="@+id/stopmirror"
+              android:drawableTop="@drawable/stop"
+              android:background="@color/bootstrap_gray"
+              />
+
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="To Mirror"
+              android:layout_weight="1"
+              android:onClick="startmirror"
+              android:drawableTop="@drawable/mirror"
+              android:background="@color/bootstrap_gray"
+              />
+
+
+      </LinearLayout>-->
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
+</LinearLayout>

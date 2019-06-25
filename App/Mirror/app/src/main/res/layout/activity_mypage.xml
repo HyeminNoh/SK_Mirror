@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Mypage"
+    android:background="@color/bootstrap_gray_dark"
+    >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일 : "
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                />
+
+            <TextView
+                android:id="@+id/useremail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 : "
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                />
+
+            <EditText
+                android:id="@+id/userpw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint=" 6자이상"
+                android:layout_weight="1"
+                android:background="@color/bootstrap_brand_secondary_fill"
+                android:enabled="false"
+                android:inputType="textPassword"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="변경"
+                android:onClick="pwreplace"
+
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소 :  "
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                />
+
+            <EditText
+                android:id="@+id/useradd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bootstrap_brand_secondary_fill"
+                android:enabled="false"
+                android:onClick="useraddreplace"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="변경"
+
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소찾기"
+                android:layout_weight="1"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="완료"
+                android:layout_weight="1"
+                />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</LinearLayout>

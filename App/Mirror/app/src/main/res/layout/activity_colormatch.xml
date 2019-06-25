@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Colormatch"
+    android:background="@color/bootstrap_gray_dark"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="컬러보기"
+            android:onClick="imageview"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/attach"
+            android:background="@color/bootstrap_gray"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/loupe"
+            android:background="@color/bootstrap_gray"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <GridView
+            android:id="@+id/hairmatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnWidth="150dp"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:numColumns="2"
+
+            >
+
+        </GridView>
+
+    </LinearLayout>
+
+</LinearLayout>
