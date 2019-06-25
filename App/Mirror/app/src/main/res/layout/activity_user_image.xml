@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserImage"
+    android:background="@color/bootstrap_gray_dark"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미지리스트"
+                android:layout_weight="1"
+                android:onClick="imageload"
+                android:drawableTop="@drawable/attach"
+                android:background="@color/bootstrap_gray"
+                />
+
+            <Button
+                android:id="@+id/imagesesrch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미지 등록"
+                android:layout_weight="1"
+                android:onClick="imagesearch"
+                android:drawableTop="@drawable/image"
+                android:background="@color/bootstrap_gray"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="업로드"
+                android:layout_weight="1"
+                android:onClick="uploadFile"
+                android:maxLines="1"
+                android:drawableTop="@drawable/upload"
+                android:background="@color/bootstrap_gray"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검색"
+                android:layout_weight="1"
+                android:onClick="usersearch"
+                android:maxLines="1"
+                android:drawableTop="@drawable/loupe"
+                android:background="@color/bootstrap_gray"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/imageinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미지 이름 : "
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/imagename"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+
+                />
+        </LinearLayout>
+
+       <LinearLayout
+            android:id="@+id/imagelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/userimage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/imagelistlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <GridView
+                android:id="@+id/imagelist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnWidth="150dp"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="10dp"
+                android:numColumns="2"
+
+                >
+
+
+            </GridView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <GridView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnWidth="90dp"
+                android:gravity="center"
+                android:horizontalSpacing="10dp"
+                android:numColumns="auto_fit"
+                android:stretchMode="spacingWidth"
+                android:verticalSpacing="10dp"
+                >
+
+
+
+            </GridView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

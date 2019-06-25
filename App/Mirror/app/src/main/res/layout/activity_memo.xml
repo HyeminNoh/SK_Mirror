@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Memo"
+    android:background="@color/bootstrap_gray_dark"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/blist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메모리스트"
+                android:layout_weight="1"
+                android:onClick="memoview"
+                android:drawableTop="@drawable/list"
+                android:background="@color/bootstrap_gray"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메모작성"
+                android:layout_weight="1"
+                android:onClick="writememo"
+                android:drawableTop="@drawable/write"
+                android:background="@color/bootstrap_gray"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메모등록"
+                android:layout_weight="1"
+                android:onClick="addmemo"
+                android:drawableTop="@drawable/upload"
+                android:background="@color/bootstrap_gray"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/memolayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/memoinput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:textColor="@color/bootstrap_brand_secondary_fill"
+
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/listlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+        <ListView
+            android:id="@+id/List"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </ListView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
