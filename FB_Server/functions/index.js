@@ -20,13 +20,11 @@ var url = require('url');
 const path = require('path');
 var routes = require('./router/main');
 
-var serviceAccount = require('./backup-c8eab-firebase-adminsdk-f1n3v-e5b11fd78f.json');
-
-//admin.initializeApp(functions.config().firebase);
-
+var serviceAccount = require();
 
 admin.initializeApp({
-  
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://backup-c8eab.firebaseio.com"
 });
 
 
@@ -69,7 +67,6 @@ var db = admin.database();
 var image = db.ref('images');
 var baseimage = db.ref('baseimage');
 
-
 //이미지 리스트 출력화면
 app.get('/baseimagelist', function(req, res){
   console.log("Http Get Request");
@@ -99,14 +96,6 @@ app.post('/endstreaming', function(req, res){
   
 });
 
-
-app.get('/memodata', function(req,res){
-  var memodata = db.ref('memos').child('Ig1o1aP8EgZW2HXjoGfTAaJYGgp1').orderByChild('tomirror').equalTo('true')
-  .once("value", function(snapshot){
-    console.log(snapshot.val());
-    res.json(snapshot.val());
-  });
-});
 /*
 app.get('/images', function(req, res){
   image.child('Ig1o1aP8EgZW2HXjoGfTAaJYGgp1')
@@ -123,6 +112,17 @@ app.get('/images', function(req, res){
 });
 */
 
+app.get('/memodata', function(req,res){
+  var parseObj = url.parse(req.url, true);
+  var username = parseObj.query.username;
+  var memodata = db.ref('memos').child(username).orderByChild('tomirror').equalTo('true')
+  .once("value", function(snapshot){
+    console.log(snapshot.val());
+    res.json(snapshot.val());
+  });
+});
+
+
 //이미지 리스트 출력화면
 app.get('/seletedimage', function(req, res){
   console.log("Http Get Request");
@@ -130,7 +130,7 @@ app.get('/seletedimage', function(req, res){
   var parseObj = url.parse(req.url, true);
   var imgname = parseObj.query.name;
   console.log(imgname);
-  baseimage.child('test') .orderByChild('img_name').equalTo(imgname)
+  baseimage.child('test').orderByChild('img_name').equalTo(imgname)
   .on("value", function(snapshot){
       console.log(snapshot.val());
       //res.send(snapshot.val());
@@ -202,8 +202,6 @@ app.get('/images', function(req, res){
 });
 
 
-
-
 exports.app = functions.https.onRequest(app);
 
 /*
@@ -255,5 +253,3 @@ app.get('/images', function(req, res){
       res.send("The read failed: " + errorObject.code);
    });
 });*/
-
-
