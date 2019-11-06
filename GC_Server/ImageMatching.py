@@ -65,7 +65,7 @@ def startMatching():
 
         hair_height, hair_width = overlayHair.shape[:2]
         y_position = originface[0][1]*(h/originface[0][3])
-        print(str(y)+":사용자얼굴인식y좌표->"+str(y_position))
+        # print(str(y)+":사용자얼굴인식y좌표->"+str(y_position))
         x = int(x-(hair_width-w)/2)
         y = int(y-y_position)
         #y = int(y-3*(y/5))

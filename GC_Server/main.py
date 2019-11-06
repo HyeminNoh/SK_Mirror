@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, jsonify, g, session, redirect
 from werkzeug.utils import secure_filename
 import time
 import maptogrid
-import SegmentationHair as seg_hair
+import HairSegmentation as seg_hair
 import rgbdata as rgb
 import gcpCloudStorage as gcpCS
 import FirebaseDatabase as FDB
@@ -147,7 +147,8 @@ def findselected():
 def segmentation():
     originurl = request.json['img_url']
     img_name = request.json['img_name']
-    base64_result = seg_hair.makeresult(originurl)
+    hair_type = request.json['type']
+    base64_result = seg_hair.makeresult(originurl, hair_type)
     url = ''
     with open("segmentation_result.png", "rb") as fh:
         url = gcpCS.upload(
