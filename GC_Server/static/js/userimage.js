@@ -53,17 +53,19 @@ function checkimage(jsonObj){
         var keys = Object.keys(loadimages);
         var img_url = loadimages[keys[i]].img_file;
         var pars_url = loadimages[keys[i]].pars_img;
+        var hair_type = loadimages[keys[i]].type;
         if(pars_url=="" || pars_url==null){
-            startparsing(keys[i],img_url)
+            startparsing(keys[i], img_url, hair_type)
         }
     }
 }
-function startparsing (img_name, img_url){
+function startparsing (img_name, img_url, hair_type){
     // get JSON with using pure javascript
     var pars_request= new XMLHttpRequest();
     var data = {
         "img_name": img_name,
         "img_url": img_url,
+        "type": hair_type
     };
     var url= "http://127.0.0.1:8080/segmentation";
     console.log(data)

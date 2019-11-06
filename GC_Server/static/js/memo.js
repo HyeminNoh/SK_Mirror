@@ -5,14 +5,14 @@ function makeMemobox(){
     // get JSON with using pure javascript
     var request= new XMLHttpRequest();
 
-    //var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/memodata";
+    //var url= "https://us-central1-backup-c8eab.cloudfunctions.net/app/memodata?username=?ysss";
     var url= "http://127.0.0.1:8080/memodata";
     request.open("GET", url);
     request.responseType='json';
     request.send();
     request.onload = function() {
         var memodata = request.response;
-        //console.log(memodata);
+        console.log(memodata);
         var memobody = document.getElementById('memo');
         for (var i = 0; i < Object.keys(memodata).length; i++) {
             row = memobody.insertRow(memobody.rows.length);
